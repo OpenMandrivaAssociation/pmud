@@ -1,6 +1,6 @@
 %define name	pmud
 %define version	0.10.1
-%define release	8mdk
+%define release	%mkrel 8
 
 Summary:	Power Manager daemon for Apple Powerbooks
 Name:		%{name}
