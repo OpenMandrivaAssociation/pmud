@@ -21,6 +21,7 @@ Patch5:		pmud-0.10-lsb-init.patch.bz2
 License:	GPL
 URL:		http://www3.jvc.nl/linuxppc
 Group:		Monitoring
+BuildRoot:	%{_tmppath}/%{name}-buildroot
 Provides:	apmd
 Requires(pre):	/sbin/chkconfig rpm-helper
 Requires(preun):	/sbin/chkconfig rpm-helper
