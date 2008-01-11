@@ -90,7 +90,7 @@ cat << EOF > %buildroot%{_datadir}/applications/mandriva-batmon.desktop
 [Desktop Entry]
 Type=Application
 Exec=%{_bindir}/batmon
-Icon=batmon.png
+Icon=batmon
 Categories=System;Monitor;
 Name=Batmon
 Comment=Battery life monitor for Apple Powerbooks
