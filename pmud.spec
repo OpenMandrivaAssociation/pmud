@@ -84,12 +84,16 @@ install -m644 %SOURCE2 -D $RPM_BUILD_ROOT%{_iconsdir}/batmon.png
 install -m644 %SOURCE3 -D $RPM_BUILD_ROOT%{_liconsdir}/batmon.png
 
 # mdk menus
-mkdir -p $RPM_BUILD_ROOT%{_menudir}
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications/
 
-cat << EOF > $RPM_BUILD_ROOT%{_menudir}/batmon
-?package(pmud):command="%{_bindir}/batmon" icon="batmon.png" \
-	needs="X11" section="Applications/Monitoring" title="Batmon" \
-	longtitle="Battery life monitor for Apple Powerbooks"
+cat << EOF > %buildroot%{_datadir}/applications/mandriva-batmon.desktop
+[Desktop Entry]
+Type=Application
+Exec=%{_bindir}/batmon
+Icon=batmon.png
+Categories=System;Monitor;
+Name=Batmon
+Comment=Battery life monitor for Apple Powerbooks
 EOF
 
 %clean
@@ -132,7 +136,7 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) %{_sysconfdir}/power/pwrctl
 %config(noreplace) %{_initrddir}/pmud 
 #
-%{_menudir}/batmon
+%{_datadir}/applications/mandriva-batmon.desktop
 %{_miconsdir}/batmon*
 %{_iconsdir}/batmon*
 %{_liconsdir}/batmon*
