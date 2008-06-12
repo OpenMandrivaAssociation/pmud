@@ -107,13 +107,17 @@ rm -rf $RPM_BUILD_ROOT
 
 %post 
 %_post_service pmud
+%if %mdkversion < 200900
 %update_menus
+%endif
 
 %preun
 %_preun_service pmud
 
+%if %mdkversion < 200900
 %postun
 %clean_menus
+%endif
 
 %files
 %defattr(-,root,root)
