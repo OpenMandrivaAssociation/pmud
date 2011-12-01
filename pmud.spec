@@ -51,11 +51,11 @@ init(8) that a power-failure has occured.
 %make CC=gcc CFLAGS="$RPM_OPT_FLAGS"
 
 %install
-rm -fr $RPM_BUILD_ROOT
+rm -fr %{buildroot}
 
-install -m 0744 pwrctl -D $RPM_BUILD_ROOT%{_sysconfdir}/power/pwrctl
-install -m 0644 power.conf -D $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/power/power.conf
-install -m 0755 pmud.rc -D $RPM_BUILD_ROOT%{_initrddir}/pmud
+install -m 0744 pwrctl -D %{buildroot}%{_sysconfdir}/power/pwrctl
+install -m 0644 power.conf -D %{buildroot}%{_sysconfdir}/sysconfig/power/power.conf
+install -m 0755 pmud.rc -D %{buildroot}%{_initrddir}/pmud
 
 # install file but lowercase'ize its name first
 InstallFile() {
@@ -65,26 +65,26 @@ InstallFile() {
 }
 
 (for file in pmud wakebay snooze fblevel trackpad; do
-	InstallFile $file 0755 $RPM_BUILD_ROOT/sbin
+	InstallFile $file 0755 %{buildroot}/sbin
 done)
 
 (for file in xmouse Batmon backlight; do
-	InstallFile $file 0755 $RPM_BUILD_ROOT%{_bindir}
+	InstallFile $file 0755 %{buildroot}%{_bindir}
 done)
 
 (for file in pmud.8 snooze.8 fblevel.8 batmon.8 xmouse.8; do
-	InstallFile $file 0644 $RPM_BUILD_ROOT%{_mandir}/man8
+	InstallFile $file 0644 %{buildroot}%{_mandir}/man8
 done)
 	
-(cd $RPM_BUILD_ROOT%{_bindir}; ln -sf ../../sbin/snooze apm)
+(cd %{buildroot}%{_bindir}; ln -sf ../../sbin/snooze apm)
 
 # mdk icons
-install -m644 %SOURCE1 -D $RPM_BUILD_ROOT%{_miconsdir}/batmon.png
-install -m644 %SOURCE2 -D $RPM_BUILD_ROOT%{_iconsdir}/batmon.png
-install -m644 %SOURCE3 -D $RPM_BUILD_ROOT%{_liconsdir}/batmon.png
+install -m644 %SOURCE1 -D %{buildroot}%{_miconsdir}/batmon.png
+install -m644 %SOURCE2 -D %{buildroot}%{_iconsdir}/batmon.png
+install -m644 %SOURCE3 -D %{buildroot}%{_liconsdir}/batmon.png
 
 # mdk menus
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications/
+mkdir -p %{buildroot}%{_datadir}/applications/
 
 cat << EOF > %buildroot%{_datadir}/applications/mandriva-batmon.desktop
 [Desktop Entry]
@@ -97,7 +97,7 @@ Comment=Battery life monitor for Apple Powerbooks
 EOF
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %pre 
 [ -c /dev/pmu ] || {
