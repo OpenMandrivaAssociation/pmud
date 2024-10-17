@@ -19,7 +19,7 @@ Patch3:		pmud-0.10-fcntl.patch.bz2
 Patch4:		pmud-0.10-broken-initscript.patch.bz2
 Patch5:		pmud-0.10-lsb-init.patch.bz2
 License:	GPL
-URL:		http://www3.jvc.nl/linuxppc
+URL:		https://www3.jvc.nl/linuxppc
 Group:		Monitoring
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 Provides:	apmd
