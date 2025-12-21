@@ -27,6 +27,7 @@ Requires(pre):	/sbin/chkconfig rpm-helper
 Requires(preun):	/sbin/chkconfig rpm-helper
 # Batmon requires tcl/tk
 Requires:	tcl, tk, hdparm
+BuildRequires:	make
 BuildRequires:	X11-devel
 ExclusiveArch:	ppc
 
